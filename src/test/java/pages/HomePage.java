@@ -21,6 +21,7 @@ public class HomePage {
     }
 
     public void allowPermissions() {
+        
     }
 
     public void openFlightDeepLink(String s) {
