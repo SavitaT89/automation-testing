@@ -4,15 +4,26 @@ import io.cucumber.java.en.*;
 import static org.junit.Assert.assertTrue;
 import base.DriverManager;
 import pages.FlightDetailsPage;
+import pages.SearchPage;
+import pages.FlightResultsPage;
+import io.appium.java_client.ios.IOSDriver;
+
 
 public class FlightSteps {
 
     private FlightDetailsPage flightDetailsPage = new FlightDetailsPage();
+    IOSDriver driver;
+    SearchPage searchPage;
+    FlightResultsPage resultsPage;
 
     @Given("open the app")
     public void open_the_app() throws Exception {
 
             DriverManager.initializeDriver(); // your driver setup
+        driver = DriverManager.getDriver();
+
+        searchPage = new SearchPage(driver);
+        resultsPage = new FlightResultsPage(driver);
     }
 
     @When("open deep link to flight")
