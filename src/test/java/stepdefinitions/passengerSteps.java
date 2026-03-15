@@ -16,7 +16,7 @@ import base.DriverManager;
 
 public class passengerSteps {
 
-    private AppiumDriver driver = DriverManager.getDriver();
+    private AppiumDriver driver = (AppiumDriver) DriverManager.getDriver("ios");
 
 
     @Given("I go to passenger screen")

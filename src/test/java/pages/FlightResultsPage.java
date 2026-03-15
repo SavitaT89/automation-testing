@@ -1,29 +1,33 @@
 package pages;
 
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.ios.IOSDriver;
 import org.openqa.selenium.By;
 
 import utils.ScrollUtil;
 
-public class FlightResultsPage extends BasePage {
+public class FlightResultsPage {
+
+    IOSDriver driver;
 
     public FlightResultsPage(IOSDriver driver){
-        super(driver);
+        this.driver=driver;
     }
 
-    public boolean findFlight(String flight){
+    public boolean findFlight(String flightNumber){
 
-        By locator = By.xpath("//XCUIElementTypeStaticText[@name='"+flight+"']");
+        for(int i=0;i<10;i++){
 
-        int maxScroll = 10;
+            if(driver.findElements(
+                    AppiumBy.iOSNsPredicateString("label CONTAINS '"+flightNumber+"'")
+            ).size()>0){
 
-        while(driver.findElements(locator).size()==0 && maxScroll>0){
+                return true;
+            }
 
             ScrollUtil.scrollDown(driver);
-
-            maxScroll--;
         }
 
-        return driver.findElements(locator).size()>0;
+        return false;
     }
 }

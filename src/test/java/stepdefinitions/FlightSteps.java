@@ -18,9 +18,9 @@ public class FlightSteps {
 
     @Given("open the app")
     public void open_the_app() throws Exception {
-
-            DriverManager.initializeDriver(); // your driver setup
-        driver = DriverManager.getDriver();
+        String platform = System.getProperty("platform", "iOS");
+        DriverManager.initializeDriver("ios"); // your driver setup
+        driver = (IOSDriver) DriverManager.getDriver("ios");
 
         searchPage = new SearchPage(driver);
         resultsPage = new FlightResultsPage(driver);

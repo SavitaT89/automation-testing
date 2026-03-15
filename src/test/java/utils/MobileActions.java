@@ -3,6 +3,7 @@ package utils;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.PerformsTouchActions;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 //import io.appium.java_client.MobileElement;
 import java.util.HashMap;
@@ -54,7 +55,7 @@ public class MobileActions {
         long end = System.currentTimeMillis() + timeoutSeconds * 1000;
         while (System.currentTimeMillis() < end) {
             try {
-                WebElement el = DriverManager.getDriver().findElement(locator);
+                WebElement el = ((WebDriver) DriverManager.getDriver1()).findElement(locator);
                 if (el.isDisplayed()) return el;
             } catch (Exception ignored) {
                 // element not yet visible

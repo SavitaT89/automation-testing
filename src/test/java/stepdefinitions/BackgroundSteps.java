@@ -8,7 +8,7 @@ import java.time.Duration;
 
 public class BackgroundSteps {
 
-    private IOSDriver driver = DriverManager.getDriver();
+    private IOSDriver driver = (IOSDriver) DriverManager.getDriver("ios");
 
     @And("I send the app to background for 30 seconds")
     public void sendAppToBackground() {

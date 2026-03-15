@@ -14,7 +14,7 @@ import java.util.List;
 
 public class FlightSearchSteps {
 
-    private AppiumDriver driver = DriverManager.getDriver();
+    private AppiumDriver driver = (AppiumDriver) DriverManager.getDriver("ios");
 
     @Given("I am on the flight search screen")
     public void openFlightSearchScreen() {
